@@ -1,12 +1,15 @@
 package com.dumpster.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -42,9 +45,15 @@ public class User {
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
-	
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	
+	@OneToMany(mappedBy="receiver", fetch=FetchType.LAZY)
+	private List<Trash> trashReceived;
+	
+	@OneToMany(mappedBy="sender", fetch=FetchType.LAZY)
+	private List<Trash> trashSent;
 	
 	public User () {}
 
@@ -111,5 +120,21 @@ public class User {
 
 	public void setConfirm(String confirm) {
 		this.confirm = confirm;
+	}
+
+	public List<Trash> getTrashReceived() {
+		return trashReceived;
+	}
+
+	public void setTrashReceived(List<Trash> trashReceived) {
+		this.trashReceived = trashReceived;
+	}
+
+	public List<Trash> getTrashSent() {
+		return trashSent;
+	}
+
+	public void setTrashSent(List<Trash> trashSent) {
+		this.trashSent = trashSent;
 	}
 }
