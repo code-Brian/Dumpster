@@ -14,6 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,7 +25,8 @@ public class Trash {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotEmpty(message="Must not be empty!")
+	@Size(min=3, message="Message must be at least 3 characters!")
 	private String message;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -51,6 +53,8 @@ public class Trash {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="receiver_id")
     private User receiver;
+    
+    public Trash() {}
 	
 	public Long getId() {
 		return id;

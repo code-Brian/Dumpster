@@ -12,11 +12,11 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/app.js"></script>
 
-<title>TrashTalk</title>
+<title>Dumpster</title>
 </head>
 <body>
 	<div class="container">
-		<h1>Welcome to Login and Registration!</h1>
+		<h1>Dumpster</h1>
 		<div class="container d-flex mt-5">
 			<div class="container">
 				<h2>Register</h2>

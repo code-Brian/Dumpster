@@ -17,6 +17,10 @@ public class TrashService {
 	public Trash create(Trash t) {
 		return trashRepo.save(t);
 	}
+
+	public Trash update(Trash t) {
+		return trashRepo.save(t);
+	}
 	
 	public Trash getOne(Long id) {
 		Optional<Trash> optTrash = trashRepo.findById(id);
@@ -27,7 +31,15 @@ public class TrashService {
 		}
 	}
 	
+	public void delete(Long id) {
+		trashRepo.deleteById(id);
+	}
+	
 	public List<Trash> getAllByReceiver(Long receiverId) {
 		return trashRepo.findAllByReceiverId(receiverId);
+	}
+	
+	public List<Trash> getAllBySender(Long senderId){
+		return trashRepo.findAllBySenderId(senderId);
 	}
 }

@@ -8,4 +8,5 @@ import com.dumpster.models.Trash;
 
 public interface TrashRepository extends CrudRepository<Trash, Long>{
 	public List<Trash> findAllByReceiverId(Long id);
+	public List<Trash> findAllBySenderId(Long id);
 }
